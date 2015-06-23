@@ -2,6 +2,16 @@
 <h1> Sign up </h1>
 
 <%= form_for(@user) do |f| %>
+<% if @user.errors.any? %>
+The form contains
+<%= pluralize(@user.errors.count,"error") %>
+<ul>
+<% @user.errors.full_messages.each do |msg| %>
+<li><%= msg %></li>
+<% end %>
+</ul>
+<% end %>
+
   <%= f.label :name %>
   <%= f.text_field :name %> <br/>
   <%= f.label :email %>
